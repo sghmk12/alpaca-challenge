@@ -24,6 +24,7 @@ var/
 pip-log.txt
 pip-delete-this-directory.txt
 .pytest_cache/
+alpaca_venv/
 
 # JavaScript/TypeScript (Next.js)
 node_modules/
