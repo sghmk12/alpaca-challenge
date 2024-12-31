@@ -1,13 +1,61 @@
-# Alpaca Health Software Engineering Take-Home Project
+# Alpaca Health Software Engineering Take-Home Project - Sathira
 
 ### Project Description
 
 Visit this link for details:
 [https://harviio.notion.site/Alpaca-Health-Eng-Take-home-Project-1411bfc50b90803382d4cae01f9bcf18?pvs=4](https://www.notion.so/harviio/ABA-Session-Note-Generator-Take-Home-Project-1411bfc50b90803382d4cae01f9bcf18?pvs=4)
 
+## Approach and challenges
+
+### Challenges
+
+- I am new to many of the elements of the stack of this project including
+  - Next JS
+  - Fast API
+- I have limited time to set up and run this projext
+
+### Approach
+
+1. Set up a basic open ai gpt prompter API endpoint using Fast API
+2. Hone in the details of the gpt prompts to be specific to the topic of this project
+3. Specify output format for AI prompt
+4. Set up a basic frontend with an API folder, some components and state
+5. Create product components to interact with the API we created
+6. Use a centralized state repository like `Jotai` to avoid complex prop passing between components
+7. Tie all the components together into a single page app to avoid spending time figuring out routing
+   a. use the `use client` directitve when necessary to avoid spending time figuring out Next.js `SSR`
+
+## Design Decisions
+
+- Single Page app to avoid routing complexities and let the user input data from top to bottom
+  - Reason: for the sake of time
+- User does not save sessions and instead continually updates the current session
+  - Reason: for the sake of time
+- User does not edit session details and instead creates and deletes them
+  - Reason: for the sake of time
+
+## Assumptions
+
+- User thinks of session parameters as key value pairs
+- User thinks of session observations as a list of strings they jot down
+
+## Sources
+
+- Sample ABA notes
+  - artemisaba.com/blog/aba-session-notes
+
+## Pictures
+
+![Screenshot 1](readMePictures/app_pic_1.png "Screenshot 1")
+![Screenshot 1](readMePictures/app_pic_2.png "Screenshot 2")
+
 ## Setup Instructions
 
 ### Backend Setup (Python 3.11+ required)
+
+Create a `.env` file in the `backend` directory and copy the contents of `backend/.env.example` to the file, replacing the sample values with your desired values
+
+Start the app using the following commands
 
 ```bash
 # Create and activate virtual environment
@@ -22,6 +70,10 @@ fastapi dev main.py
 ```
 
 ### Frontend Setup (Node.js 18+ required)
+
+Create a `.env` file in the `frontend` directory and copy the contents of `frontend/.env.example` to the file, replacing the sample values with your desired values
+
+Start the app using the following ocmmands
 
 ```bash
 # Navigate to frontend directory
@@ -53,27 +105,3 @@ The application will be available at:
 - Frontend runs on port 3000 with hot reload enabled
 - Backend runs on port 8000 with auto-reload enabled
 - API documentation available at http://localhost:8000/docs
-
-## Submission
-
-1. Create a private GitHub repository
-2. Implement your solution
-3. Document any assumptions or trade-offs
-4. Include instructions for running your solution
-5. Send us the repository link
-
-## Time Expectation
-
-- Expected time: 3-4 hours
-- Please don't spend more than 6 hours
-
-## Evaluation Criteria
-
-| Category | Details | Weight |
-|----------|---------|--------|
-| Product sense and scoping | - Final product decisions alignment with requirements<br>- Appropriate deprioritization of non-crucial parts | 10% |
-| Technology selection | - Right tools chosen for the job | 10% |
-| Technical Level | - Well-organized and intuitive code structure<br>- Modular code (e.g., React components used)<br>- Proper use of React hooks<br>- Good state management<br>- Correct use of useEffect hooks | 40% |
-| Craft and Quality | - Usable and intuitive UI/UX<br>- Presence and severity of bugs | 20% |
-| Documentation | - Clear communication of logic and technical decisions in README | 10% |
-| Testing | - Presence of tests<br>- Quality and robustness of tests | 10% |
