@@ -34,9 +34,23 @@ logging.basicConfig(level=logging.INFO)
 async def generate_clinical_notes(request: ClinicalNoteReq):
     logging.info(f"Received request to generate session notes: {request.dict()}")
     
-    # TODO: generate ai prompts
-    user_prompt = ""
-    system_prompt = ""
+    system_prompt = (
+         "You are an experienced ABA therapist specializing in autism care." + 
+                 " You are generating professional notes using inputs of therapy session observations and therapy" + 
+                 " session parameters. Session observations are quick notes written by therapists about the therapy" +
+                 " session. Session parameters are categorical or quantifiable features of the session such as"+
+                 " duration or type"
+    )
+    
+    user_prompt = "Hi, can you generate some professional ABA notes for me using the following observations and session parameters?\nMy observations are:"
+
+    for observation in request.quick_observations:
+        user_prompt.append(f"\n- {observation}")
+
+    user_prompt.append("\nMy session parameters are:")
+
+    for (parameter, value) in request.session_parameters.items():
+        user_prompt.append(f"\n- {parameter}: {value}")
 
     try:
         logging.info(f"Generating chat response from Open AI model: {OPEN_AI_MODEL}")
