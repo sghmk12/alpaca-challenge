@@ -1,5 +1,10 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from routes.clinical_notes.clinical_notes_api import router as clinical_notes_router
 
 app = FastAPI()
 
@@ -11,6 +16,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(clinical_notes_router)
 
 @app.get("/")
 async def health_check():
