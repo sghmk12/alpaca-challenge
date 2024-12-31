@@ -33,6 +33,8 @@ Visit this link for details:
   - Reason: for the sake of time
 - User does not edit session details and instead creates and deletes them
   - Reason: for the sake of time
+- No tests for now
+  - Reason: for the sake of time
 
 ## Assumptions
 
